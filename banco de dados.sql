@@ -34,6 +34,18 @@ create table estoque.midia(
 	ds_midia varchar(45),
 	nu_seq_categoria integer
 );
+create table estoque.estoque(
+	id_estoque integer primary key,
+	ds_estoque varchar(45),
+	quantidade integer,
+	nu_seq_midia integer,
+	nu_seq_fornecedor integer
+);
+create table estoque.fornecedor(
+	id_fornecedor integer primary key,
+	ds_fornecedor varchar(45),
+	telefone varchar(45)
+);
 
 CREATE SCHEMA Comum;
 

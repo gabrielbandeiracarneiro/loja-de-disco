@@ -39,7 +39,9 @@ create table estoque.estoque(
 	ds_estoque varchar(45),
 	quantidade integer,
 	nu_seq_midia integer,
-	nu_seq_fornecedor integer
+	nu_seq_fornecedor integer,
+	foreing nu_seq_midia references estoque.midia(id_midia),
+	foreing nu_seq_fornecedor references estoque.fornecedor(id_fornecedor)
 );
 create table estoque.fornecedor(
 	id_fornecedor integer primary key,

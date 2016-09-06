@@ -256,7 +256,7 @@ insert into Comum.uf values
 	(02, 'SP'),
 	(03, 'RJ');
 
-insert into Comum.municpio values
+insert into Comum.municipio values
 	(0001, 'Guarabira', 01),
 	(0002, 'Rio de Janeiro', 03),
 	(0003, 'Sao Paulo', 02);
@@ -298,11 +298,17 @@ create table venda.venda(
 	foreign key(preco_venda_id_produto) references venda.preco_venda(id_preco_venda)
 );
 
-create table venda.preco_venda(
+create table venda.preco_compra(
 	id_preco_compra int,
 	preco numeric,
 	fornecedor_id_fornecedor int,
 	midia_id_midia int,
 	foreign key(fornecedor_id_fornecedor) references estoque.fornecedor(id_fornecedor),
+	foreign key(midia_id_midia) references estoque.midia(id_midia)
+);
+
+create table venda.preco_venda(
+	id_preco_venda int primary key,
+	midia_id_midia int,
 	foreign key(midia_id_midia) references estoque.midia(id_midia)
 );

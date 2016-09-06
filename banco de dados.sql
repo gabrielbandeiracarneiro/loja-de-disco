@@ -1,8 +1,22 @@
-create schema estoque;
+﻿create schema estoque;
 
 create table estoque.genero(
 	id_genero integer primary key,
 	ds_genero varchar(45)
+);
+insert into estoque.genero values(
+	1,
+	'rock'
+);
+
+insert into estoque.genero values(
+	2,
+	'pop'
+);
+
+insert into estoque.genero values(
+	3,
+	'clássica'
 );
 
 create table estoque.artista(
@@ -10,6 +24,18 @@ create table estoque.artista(
 	ds_artista varchar(45)
 );
 
+insert into estoque.artista values(
+	1,
+	'Jonh Lennon'
+);
+insert into estoque.artista values(
+	2,
+	'Adam Saleh'
+);
+insert into estoque.artista values(
+	3,
+	'Mozart'
+);
 create table estoque.faixa_midia(
 	id_faixa integer primary key,
 	ds_faixa varchar(45),

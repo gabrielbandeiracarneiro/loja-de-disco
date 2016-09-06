@@ -105,18 +105,44 @@ insert into estoque.gravadora(
 	3,
 	'cometa'
 );
-create table estoque.artista_gravadora_faixa(
-	id integer primary key,
-	nu_seqmidia integer,
-	nu_seq_faixa integer,
-	nu_seq_artista integer,
-	nu_seq_gravadora integer
-);
 
 create table estoque.midia(
 	id_midia integer primary key,
 	ds_midia varchar(45),
-	nu_seq_categoria integer
+	nu_seq_categoria integer,
+	foreign key(nu_seq_categoria) references estoque.genero(id_genero)
+);
+insert into estoque.midia values(
+	1,
+	'q1',
+	2
+);
+insert into estoque.midia values(
+	2,
+	'q2',
+	1,
+);
+insert into estoque.midia values(
+	3,
+	'q3',
+	3
+);
+
+create table estoque.artista_gravadora_faixa(
+	id integer primary key,
+	nu_seq_midia integer,
+	nu_seq_faixa integer,
+	nu_seq_artista integer,
+	nu_seq_gravadora integer,
+	foreign key(nu_seq_midia) references estoque.midia(id_midia),
+	foreign key(nu_seq_artista) references estoque.artista(id_artista),
+	foreign key(nu_seq_faixa) references estoque.faixa_midia(id_faixa),
+	foreign key(nu_seq_gravadora) references estoque.gravadora(id_gravadora)
+);
+insert into estoque.artista_gravadora_faixa(
+	1,
+	3,
+	2,
 );
 create table estoque.estoque(
 	id_estoque integer primary key,

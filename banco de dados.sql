@@ -41,12 +41,44 @@ create table estoque.faixa_midia(
 	ds_faixa varchar(45),
 	tempo_faixa time
 );
+insert into faixa_midia values(
+	1,
+	'm1',
+	'00:04'
+);
+insert into faixa_midia values(
+	2,
+	'm2',
+	'00:03'
+);
+insert into faixa_midia values(
+	3,
+	'm3',
+	'00:05'
+);
+insert into faixa_midia values(
+	4,
+	'm4',
+	'00:02'
+);
+insert into faixa_midia values(
+	5,
+	'm5',
+	'00:03'
+);
 
+insert into faixa_midia values(
+	6,
+	'music1',
+	'00:04'
+);
 create table estoque.gravadora(
 	id_gravadora integer primary key,
 	ds_gravadora varchar(45)
 );
-
+insert into estoque.gravadora(
+	
+);
 create table estoque.artista_gravadora_faixa(
 	id integer primary key,
 	nu_seqmidia integer,

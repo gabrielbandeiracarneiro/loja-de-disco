@@ -284,3 +284,25 @@ insert into Comum.telefone values
 	(000006, '3221-1762', '(41)98628-9007', 001),
 	(000007, '3271-2021', '(83)98729-0918', 003);
 	
+create schema venda;
+
+create table venda.venda(
+	id_venda int,
+	ds_venda varchar(45),
+	qnt varchar(45),
+	preco_venda_id_produto int,
+	nu_seq_cliente_id int,
+	funcionario_matricula_funcionario int,
+	foreign key(nu_seq_cliente_id) references comum.cliente(id_cliente),
+	foreign key(funcionario_matricula_funcionario) references comum.funcionario(matricula_funcionario),
+	foreign key(preco_venda_id_produto) references venda.preco_venda(id_preco_venda)
+);
+
+create table venda.preco_venda(
+	id_preco_compra int,
+	preco numeric,
+	fornecedor_id_fornecedor int,
+	midia_id_midia int,
+	foreign key(fornecedor_id_fornecedor) references estoque.fornecedor(id_fornecedor),
+	foreign key(midia_id_midia) references estoque.midia(id_midia)
+);

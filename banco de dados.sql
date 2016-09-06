@@ -84,24 +84,24 @@ insert into estoque.faixa_midia values(
 	'00:02'
 );
 
-insert into faixa_midia values(
-	3,
-	'music3',
+insert into estoque.faixa_midia values(
+	4,
+	'music4',
 	'00:02'
 );
 create table estoque.gravadora(
 	id_gravadora integer primary key,
 	ds_gravadora varchar(45)
 );
-insert into estoque.gravadora(
+insert into estoque.gravadora values(
 	1,
 	'sony'
 );
-insert into estoque.gravadora(
+insert into estoque.gravadora values(
 	2,
 	'som livre'
 );
-insert into estoque.gravadora(
+insert into estoque.gravadora values(
 	3,
 	'cometa'
 );
@@ -120,7 +120,7 @@ insert into estoque.midia values(
 insert into estoque.midia values(
 	2,
 	'q2',
-	1,
+	1
 );
 insert into estoque.midia values(
 	3,
@@ -139,10 +139,52 @@ create table estoque.artista_gravadora_faixa(
 	foreign key(nu_seq_faixa) references estoque.faixa_midia(id_faixa),
 	foreign key(nu_seq_gravadora) references estoque.gravadora(id_gravadora)
 );
-insert into estoque.artista_gravadora_faixa(
+insert into estoque.artista_gravadora_faixa values(
 	1,
 	3,
 	2,
+	1,
+	2
+);
+
+insert into estoque.artista_gravadora_faixa values(
+	2,
+	3,
+	2,
+	2,
+	2
+);
+
+insert into estoque.artista_gravadora_faixa values(
+	3,
+	3,
+	2,
+	3,
+	2
+);
+
+insert into estoque.artista_gravadora_faixa values(
+	4,
+	3,
+	2,
+	4,
+	2
+);
+
+insert into estoque.artista_gravadora_faixa values(
+	5,
+	3,
+	2,
+	5,
+	2
+);
+
+insert into estoque.artista_gravadora_faixa values(
+	5,
+	3,
+	2,
+	1,
+	2
 );
 create table estoque.estoque(
 	id_estoque integer primary key,
@@ -239,6 +281,6 @@ insert into Comum.funcionario values
 
 insert into Comum.telefone values
 	(000005, '3271-2098', '(83)98876-9089', 002),
-	(000006, '3221-1762, '(41)98628-9007', 001),
+	(000006, '3221-1762', '(41)98628-9007', 001),
 	(000007, '3271-2021', '(83)98729-0918', 003);
 	

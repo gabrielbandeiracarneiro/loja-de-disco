@@ -118,7 +118,7 @@ CREATE TABLE Comum.municipio(
 	id_municipio int primary key,
 	ds_municipio varchar(45),
 	nu_seq_uf int,
-	foreing nu_seq_uf references Comum.uf(id_uf)
+	foreign key (nu_seq_uf) references Comum.uf(id_uf)
 );
 
 CREATE TABLE Comum.pessoa(
@@ -133,20 +133,20 @@ CREATE TABLE Comum.pessoa(
 	email vaechar(45),
 	nu_seq_uf int,
 	nu_seq_municipio int,
-	foreing nu_seq_uf references Comum.uf(id_uf),
-	foreing nu_seq_municipio references Comum.municipio(id_municipio)
+	foreign key (nu_seq_uf) references Comum.uf(id_uf),
+	foreign key (nu_seq_municipio) references Comum.municipio(id_municipio)
 );
 
 CREATE TABLE Comum.cliente(
 	id_cliente int primary key,
 	nu_seq_pessoa int,
-	foreing nu_seq_pessoa references Comum.pessoa(id_pessoa)
+	foreign key (nu_seq_pessoa) references Comum.pessoa(id_pessoa)
 );
 
 CREATE TABLE Comum.funcionario(
 	matricula_funcionario int primary key,
 	nu_seq_pessoa int,
-	foreing nu_seq_pessoa references Comum.pessoa(id_pessoa)
+	foreign key (nu_seq_pessoa) references Comum.pessoa(id_pessoa)
 );
 
 CREATE TABLE Comum.telefone(
@@ -154,7 +154,7 @@ CREATE TABLE Comum.telefone(
 	numero_residencia varchar(45),
 	numero_celular varchar(45),
 	nu_seq_cliente int,
-	foreing nu_seq_cliente references Comum.cliente(id_cliente)
+	foreign key (nu_seq_cliente) references Comum.cliente(id_cliente)
 );
 
 insert into Comum.uf values 

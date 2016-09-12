@@ -1,4 +1,4 @@
-﻿create schema estoque;
+create schema estoque;
 
 create table estoque.genero(
 	id_genero integer primary key,
@@ -79,13 +79,13 @@ insert into estoque.faixa_midia values(
 	'00:03'
 );
 insert into estoque.faixa_midia values(
-	3,
+	8,
 	'music3',
 	'00:02'
 );
 
 insert into estoque.faixa_midia values(
-	4,
+	9,
 	'music4',
 	'00:02'
 );
@@ -167,15 +167,7 @@ insert into estoque.artista_gravadora_faixa values(
 	4,
 	3,
 	2,
-	4,
-	2
-);
-
-insert into estoque.artista_gravadora_faixa values(
-	5,
-	3,
 	2,
-	5,
 	2
 );
 
@@ -186,6 +178,24 @@ insert into estoque.artista_gravadora_faixa values(
 	1,
 	2
 );
+
+insert into estoque.artista_gravadora_faixa values(
+	6,
+	3,
+	2,
+	1,
+	2
+);
+create table estoque.fornecedor(
+	id_fornecedor integer primary key,
+	ds_fornecedor varchar(45),
+	telefone varchar(45)
+);
+insert into estoque.fornecedor values
+	(102, 'Som livre', '3271-4517'),
+	(103, 'Sony', '3222-4587'),
+	(104, 'Cometa', '3271-4568');
+
 create table estoque.estoque(
 	id_estoque integer primary key,
 	ds_estoque varchar(45),
@@ -200,15 +210,7 @@ insert into estoque.estoque values
 	(02, 'dvd', 6, 2, 103),
 	(03, 'blue-ray', 12, 3, 104);
 	
-create table estoque.fornecedor(
-	id_fornecedor integer primary key,
-	ds_fornecedor varchar(45),
-	telefone varchar(45)
-);
-insert into estoque.fornecedor values
-	(102, 'Som livre', '3271-4517'),
-	(103, 'Sony', '3222-4587'),
-	(104, 'Cometa', '3271-4568');
+
 CREATE SCHEMA Comum;
 
 CREATE TABLE Comum.uf(
@@ -232,7 +234,7 @@ CREATE TABLE Comum.pessoa(
 	bairro varchar(45),
 	numero int,
 	complemento varchar(45),
-	email vaechar(45),
+	email varchar(45),
 	nu_seq_uf int,
 	nu_seq_municipio int,
 	foreign key (nu_seq_uf) references Comum.uf(id_uf),
@@ -293,7 +295,11 @@ insert into Comum.telefone values
 	(000007, '3271-2021', '(83)98729-0918', 003);
 	
 create schema venda;
-
+create table venda.preco_venda(
+	id_preco_venda int primary key,
+	midia_id_midia int,
+	foreign key(midia_id_midia) references estoque.midia(id_midia)
+);
 create table venda.venda(
 	id_venda int,
 	ds_venda varchar(45),
@@ -305,6 +311,10 @@ create table venda.venda(
 	foreign key(funcionario_matricula_funcionario) references comum.funcionario(matricula_funcionario),
 	foreign key(preco_venda_id_produto) references venda.preco_venda(id_preco_venda)
 );
+insert into venda.preco_venda values
+	(1,2),
+	(2,3),
+	(3,1);
 
 create table venda.preco_compra(
 	id_preco_compra int,
@@ -315,19 +325,8 @@ create table venda.preco_compra(
 	foreign key(midia_id_midia) references estoque.midia(id_midia)
 );
 
-create table venda.preco_venda(
-	id_preco_venda int primary key,
-	midia_id_midia int,
-	foreign key(midia_id_midia) references estoque.midia(id_midia)
-);
-
 insert into venda.venda values
-	(01,'venda 01','01',01,01,01),
-	(02,'venda 02','02',01,02,02),
-	(03,'venda 03','03',01,03,03);
-
-insert into venda.preco_venda values
-	(01,50),
-	(02,40),
-	(03,80);
+	(1,'venda 01','01',1,1,1),
+	(2,'venda 02','02',1,2,2),
+	(3,'venda 03','03',1,3,3);
 

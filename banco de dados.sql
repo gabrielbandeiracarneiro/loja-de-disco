@@ -320,3 +320,14 @@ create table venda.preco_venda(
 	midia_id_midia int,
 	foreign key(midia_id_midia) references estoque.midia(id_midia)
 );
+
+insert into venda.venda values
+	(01,'venda 01','01',01,01,01),
+	(02,'venda 02','02',01,02,02),
+	(03,'venda 03','03',01,03,03);
+
+insert into venda.preco_venda values
+	(01,50),
+	(02,40),
+	(03,80);
+

@@ -195,12 +195,20 @@ create table estoque.estoque(
 	foreign key (nu_seq_midia) references estoque.midia(id_midia),
 	foreign key (nu_seq_fornecedor) references estoque.fornecedor(id_fornecedor)
 );
+insert into estoque.estoque values
+	(01, 'cd', 15, 1, 102), 
+	(02, 'dvd', 6, 2, 103),
+	(03, 'blue-ray', 12, 3, 104);
+	
 create table estoque.fornecedor(
 	id_fornecedor integer primary key,
 	ds_fornecedor varchar(45),
 	telefone varchar(45)
 );
-
+insert into estoque.fornecedor values
+	(102, 'Som livre', '3271-4517'),
+	(103, 'Sony', '3222-4587'),
+	(104, 'Cometa', '3271-4568');
 CREATE SCHEMA Comum;
 
 CREATE TABLE Comum.uf(

@@ -324,6 +324,10 @@ create table venda.preco_compra(
 	foreign key(fornecedor_id_fornecedor) references estoque.fornecedor(id_fornecedor),
 	foreign key(midia_id_midia) references estoque.midia(id_midia)
 );
+insert into venda.preco_compra values
+	(1, '7,50', 102, 1),
+	(2, '15,00', 103, 2),
+	(3, '25,00', 104, 3);
 
 insert into venda.venda values
 	(1,'venda 01','01',1,1,1),

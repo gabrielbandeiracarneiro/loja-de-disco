@@ -1,3 +1,4 @@
+
 create schema estoque;
 
 create table estoque.genero(
@@ -298,6 +299,7 @@ create schema venda;
 create table venda.preco_venda(
 	id_preco_venda int primary key,
 	midia_id_midia int,
+	preco numeric(12,2),
 	foreign key(midia_id_midia) references estoque.midia(id_midia)
 );
 create table venda.venda(
@@ -312,9 +314,9 @@ create table venda.venda(
 	foreign key(preco_venda_id_produto) references venda.preco_venda(id_preco_venda)
 );
 insert into venda.preco_venda values
-	(1,2),
-	(2,3),
-	(3,1);
+	(1,2,20),
+	(2,3,30.5),
+	(3,1,10);
 
 create table venda.preco_compra(
 	id_preco_compra int,
@@ -325,12 +327,15 @@ create table venda.preco_compra(
 	foreign key(midia_id_midia) references estoque.midia(id_midia)
 );
 insert into venda.preco_compra values
-	(1, '7,50', 102, 1),
-	(2, '15,00', 103, 2),
-	(3, '25,00', 104, 3);
+	(1, 7.5, 102, 1),
+	(2, 15.00, 103, 2),
+	(3, 25.00, 104, 3);
 
 insert into venda.venda values
 	(1,'venda 01','01',1,1,1),
 	(2,'venda 02','02',1,2,2),
 	(3,'venda 03','03',1,3,3);
 
+select c.preco as preco_de_compra, v.preco as preco_de_venda, v.preco-c.preco as lucro 
+	from venda.preco_compra c 
+	join venda.preco_venda v on (c.midia_id_midia =v.midia_id_midia);
